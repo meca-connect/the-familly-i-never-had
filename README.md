@@ -5,6 +5,12 @@ subject — a real person, from one uploaded photograph — is placed every nigh
 into a completely new, invented family: new partner, new children, new scene.
 Nothing carries over. The previous household is overwritten and never kept.
 
+<p align="center">
+  <img src="media/demo.gif" width="300" alt="The PaperColor replaces the household: 'Your household is being reassigned.', then a newly generated family appears">
+</p>
+<p align="center"><em>A household being reassigned (sped up; the 30 s generation wait is compressed).
+<a href="media/demo.mp4">Full video, 68 s</a>.</em></p>
+
 Everything runs on the device: it sends the subject's photo to the OpenAI
 image-edit API, receives the picture, dithers it to the six Spectra 6 ink
 colours, stores it on SD and refreshes the panel.
@@ -159,3 +165,4 @@ Cost: about $0.013 per image (estimated from token counts at medium quality).
   - `web_ui.h` — dashboard, subject and setup pages
   - `dither_core.h`, `sd_image_bridge.h`, `storage_commands.h` — panel, SD, USB tools
   - `openai.h.example`, `wifi.h.example` — templates for the local secrets
+- `media/` — demo GIF and video (audio removed)
