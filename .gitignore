@@ -1,0 +1,15 @@
+# Local secrets — never commit
+openai.h
+wifi.h
+.env
+secrets.*
+
+# Build output (firmware images contain the compiled-in API key)
+build/
+*.bin
+*.elf
+*.map
+
+# Private test material
+.private/
+__pycache__/

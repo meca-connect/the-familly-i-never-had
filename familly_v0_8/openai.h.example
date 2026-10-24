@@ -1,0 +1,7 @@
+#pragma once
+// Copy to openai.h (same folder) and paste an OpenAI API key between the quotes.
+// openai.h is ignored by Git. Never commit it, share it, or print the key.
+// Use a key from platform.openai.com (API billing), not a ChatGPT login.
+// WARNING: the key is compiled into the firmware and can be extracted from
+// the device or its flash. Use a dedicated key with a low spending limit.
+#define FAMILY_OPENAI_API_KEY ""

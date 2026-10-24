@@ -1,0 +1,8 @@
+#pragma once
+// OPTIONAL. Copy to wifi.h (same folder) to bake Wi-Fi credentials into the build.
+// Without it, the device opens a setup hotspot and you enter Wi-Fi on its web page
+// (credentials are then kept in NVS). wifi.h is ignored by Git.
+// WARNING: compile-time credentials can be recovered from the firmware image.
+// A non-empty SSID overrides saved settings on the next upload.
+#define FAMILY_WIFI_SSID ""
+#define FAMILY_WIFI_PASSWORD ""
