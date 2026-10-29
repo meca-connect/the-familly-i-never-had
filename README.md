@@ -15,9 +15,11 @@ Everything runs on the device: it sends the subject's photo to the OpenAI
 image-edit API, receives the picture, dithers it to the six Spectra 6 ink
 colours, stores it on SD and refreshes the panel.
 
-**Status: v0.8, roughly 75–80% there.** The pipeline, web UI and nightly
-schedule work on hardware; battery self-wake and image quality/identity need
-more work (see Status and Roadmap).
+**Status: v0.8.** The pipeline and web UI work on hardware. The device has now
+been used for three consecutive days without recharging, and fresh image
+generation is working. This is encouraging real-world evidence that battery
+savings are effective, not a controlled battery-life measurement. See Status
+and Roadmap for what remains to verify.
 
 ## How it works
 
@@ -53,7 +55,9 @@ more work (see Status and Roadmap).
 - **Power** — on USB always awake. On battery: awake while used (4 min idle,
   10 min with setup open, 40 s after a night assignment), then full M5PM1
   power-off with the image left on the panel, scheduling its own wake for the
-  next night. *Self-wake is not yet proven — see Status.*
+  next night. The owner has observed three consecutive days of operation
+  without recharging, with fresh image generation; see Status for the limits
+  of that evidence.
 - **Dystopian states** — "We don't know who you are yet.", "Your authorization
   could not be verified.", "No family could be assigned tonight.", …
 
@@ -126,13 +130,22 @@ automatic regeneration when the subject changes, persistent caption, USB /
 battery detection, NTP → RTC sync, LAN authorization checks, full M5PM1
 power-off.
 
-Not yet verified:
-- **Self-wake from power-off.** An RTC-countdown wake on PM1 GPIO2 did not
+Owner-reported field use: three consecutive days without recharging, with fresh
+image generation working. This is evidence of useful real-world battery
+runtime, but no start/end charge measurements were recorded, so it is not a
+measured battery-life result. It also does not establish that the scheduled RTC
+wake caused each generation.
+
+Still to verify in a controlled test:
+- **Autonomous wake from power-off.** An RTC-countdown wake on PM1 GPIO2 did not
   power the board back on in testing (recovered with the power button). v0.8
   also arms the M5PM1 power-on timer and logs every PM1 return code, but this
-  is untested. Keep the device on USB until `SLEEPTEST 30` comes back by itself.
-- A real overnight assignment, and actual battery life.
-- How well the subject's identity is preserved across many generations.
+  specific wake path has not been verified. `SLEEPTEST 30` deliberately powers
+  the device off; run it only when someone can press the power button if it does
+  not wake by itself.
+- A scheduled overnight assignment triggered by the RTC.
+- Battery-life measurement from recorded charge levels / runtime, and how well
+  the subject's identity is preserved across many generations.
 
 Cost: about $0.013 per image (estimated from token counts at medium quality).
 
